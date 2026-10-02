@@ -1,0 +1,66 @@
+{
+  "diagnostic_only": true,
+  "seeds": [42],
+  "cutoffs": [10, 20, 50, 100, 200],
+  "training": {
+    "epochs": 1,
+    "batch_size": 8,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "max_history": 5,
+    "patience": 1,
+    "device": "cpu",
+    "torch_threads": 2,
+    "validation_examples": 8,
+    "max_train_examples": 16,
+    "selection_metric": "recall@100",
+    "guard_metric": "map@20",
+    "map_guard_tolerance": 0.0
+  },
+  "model": {
+    "d_model": 16,
+    "nhead": 2,
+    "num_encoder_layers": 1,
+    "num_decoder_layers": 1,
+    "dim_feedforward": 32,
+    "dropout": 0.0
+  },
+  "tokenizer": {
+    "model": {
+      "input_dim": 15,
+      "hidden_dims": [16],
+      "latent_dim": 4,
+      "num_levels": 3,
+      "codebook_size": 16,
+      "commitment_weight": 0.25
+    },
+    "training": {
+      "epochs": 2,
+      "warmup_epochs": 1,
+      "batch_size": 8,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "validation_fraction": 0.2,
+      "split_seed": 2026,
+      "patience": 2,
+      "init_samples": 32,
+      "torch_threads": 2
+    },
+    "permutation_seed_offset": 10000
+  },
+  "evaluation": {
+    "beam_size": 200,
+    "generative_batch_size": 2,
+    "max_validation_examples": 8,
+    "max_test_examples": 8,
+    "request_latency_requests": 2,
+    "bootstrap_resamples": 30,
+    "sampling_seed": 2026
+  },
+  "diagnostics": {
+    "sample_size": 16,
+    "neighbors": 3,
+    "batch_size": 8,
+    "seed": 2026
+  }
+}

@@ -22,9 +22,10 @@ inference, and exclusion covers all earlier seen items.
 [300-dpi PNG](docs/figures/model_architecture.png) ·
 [Figure source](scripts/draw_architecture.py)
 
-The project now includes an **M1/M2 experiment path**: broader retrieval metrics,
+The project includes an **M1/M2 experiment path**: broader retrieval metrics,
 a SASRec-style baseline, three-seed comparisons, and controlled AdamW/SAM
-continuations. We stop at M2 for the [learning checkpoint](docs/learning_checkpoint_m2.md).
+continuations. The [M2 learning checkpoint](docs/learning_checkpoint_m2.md)
+explains the implemented system and its completed experiments.
 
 **M2 completed on 2026-10-03:** three seeds, all 22,225 eligible test users, and
 cutoffs 10/20/50/100/200. Generative + AdamW6 reached mean Recall@100 **0.18106**
@@ -32,7 +33,11 @@ and MAP@20 **0.02120**; SASRec reached **0.22956** and **0.03739**. SAM did not
 improve Recall@100 or MAP@20 over the AdamW controls in this configuration. Read the
 [complete results](docs/m2_results.md) and [M1 validation results](docs/m1_results.md).
 The selected checkpoints and per-user rankings are saved locally under `results/m2/`.
-Implementation pauses at the M2 learning checkpoint.
+**M3 is in progress:** a controlled tokenizer study compares hierarchical k-means
+and learned RQ-VAE codes with their respective shuffled-code controls. All arms
+share the data, Transformer, vocabulary capacity, and selection/evaluation rules.
+Read the [frozen M3 protocol](docs/m3_protocol.md). The figure above shows the M2
+baseline; M3 changes the item tokenizer and uses a common padded vocabulary.
 
 ## Start here
 
@@ -170,6 +175,29 @@ The existing checkpoint can be tried immediately with a real catalog history:
 .\.venv\Scripts\python.exe -m beautyrec recommend --history B007IY97U0 B00870XLDS B008MIRO88 B00BQYYMN0
 ```
 
+## M3: semantic alignment and learned tokenization
+
+```powershell
+python -m beautyrec m3 --config configs/m3.json --run-dir results/m3 --device cuda
+```
+
+The four arms are HKM, whole-code-permuted HKM, learned RQ, and whole-code-permuted
+RQ. First fit all three RQ tokenizers on frozen metadata, then freeze a common
+vocabulary and train twelve recommenders from scratch. Each pair shares its
+complete codeword set and model capacity. All selected checkpoint hashes are
+recorded before test retrieval. The primary contrasts measure semantic codes
+against their matched permutation controls; RQ versus HKM is secondary.
+
+RQ epoch selection uses a metadata holdout, followed by a fresh fit on the full
+warm catalog. Recommendation validation/test scores do not choose the tokenizer.
+M3 retains Recall@100 selection, the popularity MAP@20 guard, full-history
+exclusion, three seeds, and full final evaluation at 10/20/50/100/200. Optimizer
+continuations and a new dataset belong to separate experiments.
+
+See the [protocol](docs/m3_protocol.md) and
+[M3 learning checkpoint](docs/learning_checkpoint_m3.md). `configs/m3_smoke.json`
+is a limited synthetic diagnostic configuration and cannot complete M3.
+
 ## Understand the code
 
 | Module | Responsibility |
@@ -177,6 +205,8 @@ The existing checkpoint can be tried immediately with a real catalog history:
 | `src/beautyrec/data.py` | Downloads, safe parsing, deduplication, chronological examples and catalog |
 | `src/beautyrec/embeddings.py` | Frozen metadata embeddings and offline debugging features |
 | `src/beautyrec/semantic_ids.py` | Hierarchical k-means, deterministic unique codes and diagnostics |
+| `src/beautyrec/rqvae.py` | Residual quantization, gradient routing, metadata selection and full-catalog refit |
+| `src/beautyrec/tokenizer_diagnostics.py` | Matched code permutations, usage/collisions, semantic locality and interaction exposure |
 | `src/beautyrec/model.py` | Position encodings, history encoder and causal target decoder |
 | `src/beautyrec/decoding.py` | Valid-code trie and catalog-constrained beam search |
 | `src/beautyrec/training.py` | Teacher forcing, checkpoint selection, evaluation and experiment records |
@@ -188,6 +218,7 @@ The existing checkpoint can be tried immediately with a real catalog history:
 | `src/beautyrec/optimizers.py` | Two-pass SAM with exact parameter restoration |
 | `src/beautyrec/experiment_training.py` | Shared M2 training, validation guards and continuations |
 | `src/beautyrec/benchmark.py` | Reproducible multi-seed experiment orchestration and reports |
+| `src/beautyrec/m3_benchmark.py` | Frozen tokenizer controls, common capacity and M3 orchestration |
 | `src/beautyrec/cli.py` | Thin command-line orchestration |
 
 Start reading `model.py`, then `decoding.py`, then `training.py`. Configuration
@@ -270,8 +301,8 @@ retrieval over the full eligible catalog without sampled negative candidates.
   initial calls, and excludes metadata encoding. It is a diagnostic timing,
   not a production throughput benchmark.
 
-The M2 path adds SASRec as a stronger comparison; random-code/RQ-VAE controls
-belong to M3. Popularity is a sanity check. Single-seed smoke results do not
+The M2 path adds SASRec as a stronger comparison; M3 adds matched shuffled-code
+controls and learned residual quantization. Popularity is a sanity check. Single-seed smoke results do not
 establish superiority, and paper scores require matching preprocessing protocols.
 
 ## Saved outputs
@@ -285,6 +316,7 @@ results/beauty/evaluation/ Per-user metrics and aggregate test summary
 results/demo/             Synthetic diagnostic artifacts
 results/m1/               Broader evaluation of the initial checkpoint
 results/m2/               Frozen protocol, seed runs, rankings and comparison report
+results/m3/               RQ fits, tokenizer manifests, four-arm seed runs and planned contrasts
 ```
 
 Catalog, tokenizer and interaction-file checksums prevent silently mixing a

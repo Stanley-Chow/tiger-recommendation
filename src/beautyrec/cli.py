@@ -98,6 +98,17 @@ def build_parser() -> argparse.ArgumentParser:
     benchmark.add_argument("--config", type=Path, default=Path("configs/m2.json"))
     benchmark.add_argument("--device", help="Override the experiment device (auto, cpu, cuda)")
 
+    milestone_three = commands.add_parser(
+        "m3", help="Compare semantic, permuted, and learned RQ tokenizers under a frozen protocol"
+    )
+    milestone_three.add_argument("--processed-dir", type=Path, default=Path("data/processed"))
+    milestone_three.add_argument("--artifact-dir", type=Path, default=Path("artifacts/beauty"))
+    milestone_three.add_argument("--run-dir", type=Path, default=Path("results/m3"))
+    milestone_three.add_argument("--config", type=Path, default=Path("configs/m3.json"))
+    milestone_three.add_argument(
+        "--device", help="Override the experiment device (auto, cpu, cuda)"
+    )
+
     recommend = commands.add_parser("recommend", help="Generate products from an ASIN history")
     recommend.add_argument("--history", nargs="+", required=True, help="Oldest to newest ASINs")
     recommend.add_argument("--processed-dir", type=Path, default=Path("data/processed"))
@@ -346,6 +357,27 @@ def main() -> None:
                 config,
                 device_override=args.device,
             )
+        elif args.command == "m3":
+            from beautyrec.m3_benchmark import run_m3
+
+            config = json.loads(args.config.read_text(encoding="utf-8"))
+            result = run_m3(
+                args.processed_dir,
+                args.artifact_dir,
+                args.run_dir,
+                config,
+                device_override=args.device,
+            )
+            # Full histories, diagnostics and contrasts remain in results.json.
+            # Keep terminal output readable for long GPU experiments.
+            result = {
+                "m3_complete": result["m3_complete"],
+                "diagnostic_only": result["diagnostic_only"],
+                "common_vocab_size": result["common_vocab_size"],
+                "test_examples": result["test_examples"],
+                "results": str((args.run_dir / "results.json").resolve()),
+                "report": str((args.run_dir / "REPORT.md").resolve()),
+            }
         else:
             result = run_demo(args.work_dir, args.epochs)
     except (ValueError, FileNotFoundError, RuntimeError, ImportError) as error:
