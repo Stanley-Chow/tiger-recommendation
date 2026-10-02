@@ -1,0 +1,25 @@
+{
+  "training": {
+    "epochs": 10,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "max_history": 20,
+    "patience": 3,
+    "seed": 42,
+    "device": "auto",
+    "torch_threads": 4,
+    "top_k": 10,
+    "beam_size": 20,
+    "eval_max_examples": 256,
+    "max_train_examples": null
+  },
+  "model": {
+    "d_model": 128,
+    "nhead": 4,
+    "num_encoder_layers": 2,
+    "num_decoder_layers": 2,
+    "dim_feedforward": 256,
+    "dropout": 0.1
+  }
+}

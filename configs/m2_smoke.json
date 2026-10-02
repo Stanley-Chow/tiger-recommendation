@@ -1,0 +1,53 @@
+{
+  "diagnostic_only": true,
+  "seeds": [42],
+  "cutoffs": [10, 20, 50, 100, 200],
+  "training": {
+    "epochs": 1,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "max_history": 5,
+    "patience": 1,
+    "device": "cpu",
+    "torch_threads": 2,
+    "validation_examples": 8,
+    "max_train_examples": 32,
+    "selection_metric": "recall@100",
+    "guard_metric": "map@20",
+    "map_guard_tolerance": 0.0
+  },
+  "models": {
+    "generative": {
+      "d_model": 32,
+      "nhead": 4,
+      "num_encoder_layers": 1,
+      "num_decoder_layers": 1,
+      "dim_feedforward": 64,
+      "dropout": 0.1
+    },
+    "sasrec": {
+      "d_model": 32,
+      "nhead": 4,
+      "num_layers": 1,
+      "dim_feedforward": 64,
+      "dropout": 0.1
+    }
+  },
+  "continuations": {
+    "epochs": 3,
+    "learning_rate": 0.0001,
+    "sam_rho": 0.05,
+    "adamw_compute_control_epochs": 6
+  },
+  "evaluation": {
+    "beam_size": 200,
+    "generative_batch_size": 4,
+    "sasrec_batch_size": 8,
+    "max_validation_examples": 8,
+    "max_test_examples": 8,
+    "request_latency_requests": 2,
+    "bootstrap_resamples": 100,
+    "sampling_seed": 2026
+  }
+}
