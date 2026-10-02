@@ -17,6 +17,25 @@ The tokenizer is trained separately from the recommender. RQ training reconstruc
 metadata vectors; recommender training predicts the next reviewed item. Strong
 metadata reconstruction alone does not establish strong recommendations.
 
+```mermaid
+flowchart TD
+    M[Product metadata] --> E[Frozen MiniLM vectors]
+    E --> H[Fixed hierarchical k-means codes]
+    E --> Q[RQ-VAE: metadata holdout selection, then full-catalog refit]
+    H --> HP[Whole-code permutation control]
+    Q --> QP[Whole-code permutation control]
+    H --> V[Freeze all four code mappings and common vocabulary]
+    HP --> V
+    Q --> V
+    QP --> V
+    I[Chronological training histories] --> T
+    V --> T[Train 4 arms x 3 seeds with the same Transformer]
+    T --> S[Select epochs on validation Recall@100 with MAP@20 guard]
+    S --> F[Freeze all 12 selected checkpoints]
+    F --> B[Trie-constrained beam search: 200 unseen products]
+    B --> A[Full test metrics, paired contrasts, and tokenizer diagnostics]
+```
+
 ## Walkthrough
 
 1. **Code permutation.** Inspect one saved `item_to_source_item` mapping. Show

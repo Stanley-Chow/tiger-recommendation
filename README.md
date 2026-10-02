@@ -2,9 +2,11 @@
 
 A readable first implementation of semantic-ID next-item retrieval.
 
-This is a **simplified TIGER-style system**. It uses hierarchical k-means rather than
-TIGER's RQ-VAE, a small PyTorch Transformer, and MiniLM rather than Sentence-T5.
-It generates product codes, not natural-language product descriptions.
+This is a **simplified TIGER-style system** using a small PyTorch Transformer and
+MiniLM metadata embeddings rather than Sentence-T5. The M2 baseline uses
+hierarchical k-means; M3 adds a separately trained residual quantization
+autoencoder and controlled code-permutation experiments. It generates product
+codes, not natural-language product descriptions.
 
 ![M2 architecture: offline metadata-to-code tokenizer, trainable encoder-decoder Transformer, teacher-forced loss, and constrained beam search for ranked products](docs/figures/model_architecture.svg)
 
@@ -188,6 +190,17 @@ complete codeword set and model capacity. All selected checkpoint hashes are
 recorded before test retrieval. The primary contrasts measure semantic codes
 against their matched permutation controls; RQ versus HKM is secondary.
 
+After the full study finishes, audit its saved checkpoints and every ranking,
+then export the results figure (requires the `figures` extra):
+
+```powershell
+python scripts/verify_m3_results.py --run-dir results/m3 --project-dir .
+python scripts/plot_m3_results.py --run-dir results/m3 --output-dir docs/figures
+```
+
+The [M3 learning checkpoint](docs/learning_checkpoint_m3.md) includes the study
+flowchart, residual-quantization math, gradient routing, and interpretation guide.
+
 RQ epoch selection uses a metadata holdout, followed by a fresh fit on the full
 warm catalog. Recommendation validation/test scores do not choose the tokenizer.
 M3 retains Recall@100 selection, the popularity MAP@20 guard, full-history
@@ -346,6 +359,10 @@ evaluation, causal SASRec, batched decoding, SAM, and experiment orchestration.
 Both local and RTX 5090 environments passed 159 tests and Ruff for the completed
 M2 run. GPU PyTorch was 2.12.1+cu130; its observed package list is saved in
 `results/runtime-requirements.txt`.
+
+The M3 implementation passed **222 local CPU tests** and Ruff on 2026-10-03,
+plus a real four-arm end-to-end synthetic smoke run. Full M3 GPU experiments
+remain pending; synthetic smoke scores do not establish Amazon performance.
 
 The original dataset contains 198,502 reviews from 22,363 users. Preparation
 produced 131,413 training examples and 12,068 warm catalog items. All items have
