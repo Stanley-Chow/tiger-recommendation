@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1008pt" height="727.2pt" viewBox="0 0 1008 727.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-03T02:15:03.552866</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>beautyrec architecture figure</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 727.2 
+L 1008 727.2 
+L 1008 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 30.6 172.44 
+L 977.4 172.44 
+Q 983.88 172.44 983.88 165.96 
+L 983.88 73.8 
+Q 983.88 67.32 977.4 67.32 
+L 30.6 67.32 
+Q 24.12 67.32 24.12 73.8 
+L 24.12 165.96 
+Q 24.12 172.44 30.6 172.44 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #ffffff; stroke: #c9d2dc; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 44.64 157.32 
+L 229.68 157.32 
+Q 233.64 157.32 233.64 153.36 
+L 233.64 105.12 
+Q 233.64 101.16 229.68 101.16 
+L 44.64 101.16 
+Q 40.68 101.16 40.68 105.12 
+L 40.68 153.36 
+Q 40.68 157.32 44.64 157.32 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #edf6f0; stroke: #32725b; stroke-width: 1.15; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 268.56 157.32 
+L 460.8 157.32 
+Q 464.76 157.32 464.76 153.36 
+L 464.76 105.12 
+Q 464.76 101.16 460.8 101.16 
+L 268.56 101.16 
+Q 264.6 101.16 264.6 105.12 
+L 264.6 153.36 
+Q 264.6 157.32 268.56 157.32 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #edf6f0; stroke: #32725b; stroke-width: 1.15; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 499.68 157.32 
+L 691.92 157.32 
+Q 695.88 157.32 695.88 153.36 
+L 695.88 105.12 
+Q 695.88 101.16 691.92 101.16 
+L 499.68 101.16 
+Q 495.72 101.16 495.72 105.12 
+L 495.72 153.36 
+Q 495.72 157.32 499.68 157.32 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #edf6f0; stroke: #32725b; stroke-width: 1.15; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 730.8 157.32 
+L 962.64 157.32 
+Q 966.6 157.32 966.6 153.36 
+L 966.6 105.12 
+Q 966.6 101.16 962.64 101.16 
+L 730.8 101.16 
+Q 726.84 101.16 726.84 105.12 
+L 726.84 153.36 
+Q 726.84 157.32 730.8 157.32 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #edf6f0; stroke: #32725b; stroke-width: 1.15; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 30.6 406.44 
+L 977.4 406.44 
+Q 983.88 406.44 983.88 399.96 
+L 983.88 214.2 
+Q 983.88 207.72 977.4 207.72 
+L 30.6 207.72 
+Q 24.12 207.72 24.12 214.2 
+L 24.12 399.96 
+Q 24.12 406.44 30.6 406.44 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #ffffff; stroke: #c9d2dc; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 44.64 325.8 
+L 229.68 325.8 
+Q 233.64 325.8 233.64 321.84 
+L 233.64 250.56 
+Q 233.64 246.6 229.68 246.6 
+L 44.64 246.6 
+Q 40.68 246.6 40.68 250.56 
+L 40.68 321.84 
+Q 40.68 325.8 44.64 325.8 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #eef4fa; stroke: #0f4d92; stroke-width: 1.15; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 268.56 325.8 
+L 460.8 325.8 
+Q 464.76 325.8 464.76 321.84 
+L 464.76 250.56 
+Q 464.76 246.6 460.8 246.6 
+L 268.56 246.6 
+Q 264.6 246.6 264.6 250.56 
+L 264.6 321.84 
+Q 264.6 325.8 268.56 325.8 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #eef4fa; stroke: #0f4d92; stroke-width: 1.15; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 499.68 325.8 
+L 691.92 325.8 
+Q 695.88 325.8 695.88 321.84 
+L 695.88 250.56 
+Q 695.88 246.6 691.92 246.6 
+L 499.68 246.6 
+Q 495.72 246.6 495.72 250.56 
+L 495.72 321.84 
+Q 495.72 325.8 499.68 325.8 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #eef4fa; stroke: #0f4d92; stroke-width: 1.15; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 730.8 325.8 
+L 962.64 325.8 
+Q 966.6 325.8 966.6 321.84 
+L 966.6 250.56 
+Q 966.6 246.6 962.64 246.6 
+L 730.8 246.6 
+Q 726.84 246.6 726.84 250.56 
+L 726.84 321.84 
+Q 726.84 325.8 730.8 325.8 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #eef4fa; stroke: #0f4d92; stroke-width: 1.15; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 499.68 389.88 
+L 691.92 389.88 
+Q 695.88 389.88 695.88 385.92 
+L 695.88 348.48 
+Q 695.88 344.52 691.92 344.52 
+L 499.68 344.52 
+Q 495.72 344.52 495.72 348.48 
+L 495.72 385.92 
+Q 495.72 389.88 499.68 389.88 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #eef4fa; stroke: #0f4d92; stroke-width: 1.15; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 30.6 683.64 
+L 472.68 683.64 
+Q 479.16 683.64 479.16 677.16 
+L 479.16 441.72 
+Q 479.16 435.24 472.68 435.24 
+L 30.6 435.24 
+Q 24.12 435.24 24.12 441.72 
+L 24.12 677.16 
+Q 24.12 683.64 30.6 683.64 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #ffffff; stroke: #c9d2dc; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 502.92 683.64 
+L 977.4 683.64 
+Q 983.88 683.64 983.88 677.16 
+L 983.88 441.72 
+Q 983.88 435.24 977.4 435.24 
+L 502.92 435.24 
+Q 496.44 435.24 496.44 441.72 
+L 496.44 677.16 
+Q 496.44 683.64 502.92 683.64 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #ffffff; stroke: #c9d2dc; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 48.96 556.2 
+L 221.76 556.2 
+Q 225.72 556.2 225.72 552.24 
+L 225.72 483.12 
+Q 225.72 479.16 221.76 479.16 
+L 48.96 479.16 
+Q 45 479.16 45 483.12 
+L 45 552.24 
+Q 45 556.2 48.96 556.2 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #f5eff8; stroke: #77518f; stroke-width: 1.15; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 277.2 556.2 
+L 447.84 556.2 
+Q 451.8 556.2 451.8 552.24 
+L 451.8 483.12 
+Q 451.8 479.16 447.84 479.16 
+L 277.2 479.16 
+Q 273.24 479.16 273.24 483.12 
+L 273.24 552.24 
+Q 273.24 556.2 277.2 556.2 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #f5eff8; stroke: #77518f; stroke-width: 1.15; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 520.56 556.2 
+L 689.04 556.2 
+Q 693 556.2 693 552.24 
+L 693 483.12 
+Q 693 479.16 689.04 479.16 
+L 520.56 479.16 
+Q 516.6 479.16 516.6 483.12 
+L 516.6 552.24 
+Q 516.6 556.2 520.56 556.2 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #eef4fa; stroke: #0f4d92; stroke-width: 1.15; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 730.8 556.2 
+L 962.64 556.2 
+Q 966.6 556.2 966.6 552.24 
+L 966.6 483.12 
+Q 966.6 479.16 962.64 479.16 
+L 730.8 479.16 
+Q 726.84 479.16 726.84 483.12 
+L 726.84 552.24 
+Q 726.84 556.2 730.8 556.2 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #eef4fa; stroke: #0f4d92; stroke-width: 1.15; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 587.52 661.32 
+L 939.6 661.32 
+Q 943.56 661.32 943.56 657.36 
+L 943.56 605.52 
+Q 943.56 601.56 939.6 601.56 
+L 587.52 601.56 
+Q 583.56 601.56 583.56 605.52 
+L 583.56 657.36 
+Q 583.56 661.32 587.52 661.32 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #eef4fa; stroke: #0f4d92; stroke-width: 1.15; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 234 129.6 
+L 261.954752 129.6 
+" clip-path="url(#pde7b11bb8e)" style="fill: none; stroke: #32725b; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 256.754752 127 
+L 261.954752 129.6 
+L 256.754752 132.2 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #32725b; stroke: #32725b; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 465.12 129.6 
+L 493.074752 129.6 
+" clip-path="url(#pde7b11bb8e)" style="fill: none; stroke: #32725b; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 487.874752 127 
+L 493.074752 129.6 
+L 487.874752 132.2 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #32725b; stroke: #32725b; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 696.24 129.6 
+L 724.194752 129.6 
+" clip-path="url(#pde7b11bb8e)" style="fill: none; stroke: #32725b; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 718.994752 127 
+L 724.194752 129.6 
+L 718.994752 132.2 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #32725b; stroke: #32725b; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 846.72 157.68 
+L 846.72 185.04 
+L 12.24 185.04 
+L 12.24 280.8 
+L 39.474752 280.8 
+" clip-path="url(#pde7b11bb8e)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #32725b; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 34.274752 278.2 
+L 39.474752 280.8 
+L 34.274752 283.4 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #32725b; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #32725b; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 234 285.84 
+L 261.954752 285.84 
+" clip-path="url(#pde7b11bb8e)" style="fill: none; stroke: #0f4d92; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 256.754752 283.24 
+L 261.954752 285.84 
+L 256.754752 288.44 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 465.12 285.84 
+L 493.074752 285.84 
+" clip-path="url(#pde7b11bb8e)" style="fill: none; stroke: #0f4d92; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 487.874752 283.24 
+L 493.074752 285.84 
+L 487.874752 288.44 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 696.24 285.84 
+L 724.194752 285.84 
+" clip-path="url(#pde7b11bb8e)" style="fill: none; stroke: #0f4d92; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 718.994752 283.24 
+L 724.194752 285.84 
+L 718.994752 288.44 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 595.8 344.16 
+L 595.8 328.445248 
+" clip-path="url(#pde7b11bb8e)" style="fill: none; stroke: #0f4d92; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 593.2 333.645248 
+L 595.8 328.445248 
+L 598.4 333.645248 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 846.72 326.16 
+L 846.72 419.04 
+L 362.88 419.04 
+L 362.88 477.234752 
+" clip-path="url(#pde7b11bb8e)" style="fill: none; stroke: #77518f; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 365.48 472.034752 
+L 362.88 477.234752 
+L 360.28 472.034752 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #77518f; stroke: #77518f; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 846.72 419.04 
+L 846.72 477.234752 
+" clip-path="url(#pde7b11bb8e)" style="fill: none; stroke: #0f4d92; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 849.32 472.034752 
+L 846.72 477.234752 
+L 844.12 472.034752 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 226.08 517.68 
+L 270.594752 517.68 
+" clip-path="url(#pde7b11bb8e)" style="fill: none; stroke: #77518f; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 265.394752 515.08 
+L 270.594752 517.68 
+L 265.394752 520.28 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #77518f; stroke: #77518f; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 693.36 517.68 
+L 724.194752 517.68 
+" clip-path="url(#pde7b11bb8e)" style="fill: none; stroke: #0f4d92; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 718.994752 515.08 
+L 724.194752 517.68 
+L 718.994752 520.28 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_32">
+    <path d="M 846.72 556.56 
+L 846.72 599.634752 
+" clip-path="url(#pde7b11bb8e)" style="fill: none; stroke: #0f4d92; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 849.32 594.434752 
+L 846.72 599.634752 
+L 844.12 594.434752 
+z
+" clip-path="url(#pde7b11bb8e)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 21px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #243244" x="25.2" y="27.034365" transform="rotate(-0 25.2 27.034365)">Semantic-ID generative recommendation</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #5b6675" x="25.92" y="49.905352" transform="rotate(-0 25.92 49.905352)">Implemented M2 model · Amazon Reviews 2014 Beauty · simplified TIGER-style</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #32725b" x="41.04" y="93.364258" transform="rotate(-0 41.04 93.364258)">A  OFFLINE ITEM TOKENIZER</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #32725b" x="137.16" y="122.754863" transform="rotate(-0 137.16 122.754863)">Product metadata</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(108.550969 135.053666)">Title · brand</text>
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(80.136844 148.742771)">Categories · description</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #32725b" x="364.68" y="122.754863" transform="rotate(-0 364.68 122.754863)">Frozen MiniLM</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(324.773156 135.067166)">all-MiniLM-L6-v2</text>
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(304.055719 149.761178)">384-d normalized vectors</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #32725b" x="595.8" y="122.754863" transform="rotate(-0 595.8 122.754863)">Hierarchical k-means</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(538.507688 133.996447)">3 levels · branching ≤16</text>
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(535.116656 148.806053)">+ unique within-leaf suffix</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #32725b" x="846.72" y="122.754863" transform="rotate(-0 846.72 122.754863)">Fixed item ↔ code table</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(778.892625 134.059729)">12,068 items · [c1, c2, c3, u]</text>
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(766.886062 148.69299)">4 tokens per item · vocabulary 94</text>
+   </g>
+   <g id="text_12">
+    <g id="patch_33">
+     <path d="M 428.954297 191.962002 
+L 550.245703 191.962002 
+L 550.245703 178.117998 
+L 428.954297 178.117998 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-size: 10.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #32725b" x="489.6" y="187.757285" transform="rotate(-0 489.6 187.757285)">fixed item-to-code lookup</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0f4d92" x="41.04" y="233.764258" transform="rotate(-0 41.04 233.764258)">B  TRAINABLE ENCODER–DECODER TRANSFORMER</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #0f4d92" x="137.16" y="268.194741" transform="rotate(-0 137.16 268.194741)">History → code tokens</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(72.037687 291.328541)">Last 20 items, in time order</text>
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(56.457 306.776865)">BOS + codes + EOS · ≤82 tokens</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #0f4d92" x="364.68" y="268.194863" transform="rotate(-0 364.68 268.194863)">Transformer encoder</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(291.58425 291.006229)">Shared embedding + positions</text>
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(289.944844 305.65299)">2 layers · bidirectional attention</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #0f4d92" x="595.8" y="268.194863" transform="rotate(-0 595.8 268.194863)">Transformer decoder</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(522.70425 291.006229)">Shared embedding + positions</text>
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(514.918125 305.65299)">2 layers · causal + cross-attention</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #0f4d92" x="846.72" y="268.194741" transform="rotate(-0 846.72 268.194741)">Next-token logits</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(768.373594 291.06951)">Separate linear head · 128 → 94</text>
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(792.704813 305.636959)">Full-vocabulary scores</text>
+   </g>
+   <g id="text_22">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #0f4d92" x="595.8" y="366.114863" transform="rotate(-0 595.8 366.114863)">BOS + previous code tokens</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #243244" x="595.8" y="379.3545" transform="rotate(-0 595.8 379.3545)">True prefix / generated prefix</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 10.7px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #5b6675" x="43.2" y="358.449043" transform="rotate(-0 43.2 358.449043)">M2: d = 128 · 4 heads · FFN = 256 · dropout = 0.1</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 10.7px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #5b6675" x="43.2" y="380.768938" transform="rotate(-0 43.2 380.768938)">Input embeddings are shared; positions are sinusoidal.</text>
+   </g>
+   <g id="text_26">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #77518f" x="41.04" y="461.284258" transform="rotate(-0 41.04 461.284258)">C1  TRAINING</text>
+   </g>
+   <g id="text_27">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0f4d92" x="513.36" y="461.284258" transform="rotate(-0 513.36 461.284258)">C2  RECOMMENDATION</text>
+   </g>
+   <g id="line2d_1">
+    <defs>
+     <path id="m4b4457957d" d="M 0 1.5 
+C 0.397805 1.5 0.77937 1.341951 1.06066 1.06066 
+C 1.341951 0.77937 1.5 0.397805 1.5 0 
+C 1.5 -0.397805 1.341951 -0.77937 1.06066 -1.06066 
+C 0.77937 -1.341951 0.397805 -1.5 0 -1.5 
+C -0.397805 -1.5 -0.77937 -1.341951 -1.06066 -1.06066 
+C -1.341951 -0.77937 -1.5 -0.397805 -1.5 0 
+C -1.5 0.397805 -1.341951 0.77937 -1.06066 1.06066 
+C -0.77937 1.341951 -0.397805 1.5 0 1.5 
+z
+" style="stroke: #5b6675"/>
+    </defs>
+    <g clip-path="url(#pde7b11bb8e)">
+     <use xlink:href="#m4b4457957d" x="846.72" y="419.04" style="fill: #5b6675; stroke: #5b6675"/>
+    </g>
+   </g>
+   <g id="text_28">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #77518f" x="135.36" y="500.754863" transform="rotate(-0 135.36 500.754863)">Next-item labels</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(88.842375 522.552885)">[c1, c2, c3, u, EOS]</text>
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(73.695375 537.182771)">Using A's fixed code table</text>
+   </g>
+   <g id="text_30">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #77518f" x="362.52" y="500.754741" transform="rotate(-0 362.52 500.754741)">Token cross entropy</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(294.195656 522.420416)">Full vocabulary · ignore PAD</text>
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(289.588781 537.182771)">Backpropagate to Transformer</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 11.1px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #243244" x="48.96" y="588.23245" transform="rotate(-0 48.96 588.23245)">Teacher forcing: decoder receives the true prefix.</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 11.1px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #243244" x="48.96" y="615.595702" transform="rotate(-0 48.96 615.595702)">Decoder input: [BOS, c1, c2, c3, u]</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 11.1px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #77518f" x="48.96" y="648.71245" transform="rotate(-0 48.96 648.71245)">MiniLM and the item codes stay frozen.</text>
+   </g>
+   <g id="text_35">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #0f4d92" x="604.8" y="500.754741" transform="rotate(-0 604.8 500.754741)">Catalog constraints</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(538.877813 522.54951)">Valid-code prefix trie from A</text>
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(530.864719 538.190209)">Exclude ALL earlier seen items</text>
+   </g>
+   <g id="text_37">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #0f4d92" x="846.72" y="500.754741" transform="rotate(-0 846.72 500.754741)">Autoregressive beam search</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(767.794781 522.486229)">Log-softmax → mask · width 200</text>
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #243244" transform="translate(771.527531 538.256865)">Generate 4 code tokens + EOS</text>
+   </g>
+   <g id="text_39">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #0f4d92" x="763.56" y="623.154741" transform="rotate(-0 763.56 623.154741)">Code → catalog item lookup</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 10.8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #243244" x="763.56" y="643.591969" transform="rotate(-0 763.56 643.591969)">Ranked unseen products · return top K</text>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #5b6675" x="518.4" y="582.242437" transform="rotate(-0 518.4 582.242437)">Rank by Σ log p, including EOS; no masked renormalization.</text>
+   </g>
+   <g id="text_42">
+    <text style="font-size: 10.4px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #5b6675" x="26.64" y="710.451406" transform="rotate(-0 26.64 710.451406)">Solid arrows: model/data flow.  Dashed arrow: fixed tokenizer lookup.</text>
+   </g>
+   <g id="text_43">
+    <text style="font-size: 10.4px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #5b6675" x="981.36" y="710.451305" transform="rotate(-0 981.36 710.451305)">Warm-item retrieval over the training catalog</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pde7b11bb8e">
+   <rect x="0" y="0" width="1008" height="727.2"/>
+  </clipPath>
+ </defs>
+</svg>
