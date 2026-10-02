@@ -4,6 +4,10 @@ We stop implementation at M2 and work through the system before adding RQ-VAE,
 a separate reranker, or the larger dataset. A negative comparison is a valid
 experiment result; it should be explained rather than hidden.
 
+**Reached on 2026-10-03.** All three seeds and full evaluations are complete.
+Start with [the actual M2 results](m2_results.md), then follow the walkthrough below.
+Saved checkpoints and per-user rankings are available locally under `results/m2/`.
+
 ## What M2 must produce
 
 - Three independent training seeds for the generative and SASRec baselines.
@@ -57,5 +61,5 @@ The test set does not choose the checkpoint, learning rate, or beam width.
 - Does SAM help consistently, or only for one seed? What additional cost does it incur?
 - What evidence would justify the next change, and what result would reject it?
 
-The results report records achieved evidence. This checklist describes completion
-requirements and learning topics; it does not claim the benchmark has finished.
+The results report records achieved evidence. This checklist describes the
+completion requirements and the learning topics to work through before M3.

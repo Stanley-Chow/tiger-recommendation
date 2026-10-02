@@ -63,9 +63,10 @@ randomness or buffer updates; the current Transformer has no BatchNorm running s
 ## Comparison protocol
 
 Start each continuation arm from the identical best base-model checkpoint, and
-record its SHA-256. Reset AdamW's moment state consistently in both arms if the
-base checkpoint contains only model weights; label this as a weight warm start,
-rather than resuming the base optimizer trajectory.
+record its SHA-256. Every M2 arm loads the selected model weights and starts with
+fresh AdamW moment state. The saved base optimizer state is available for
+inspection. This experiment uses a weight warm start, with the same reset in
+the three-epoch AdamW, three-epoch SAM, and six-epoch AdamW arms.
 
 Compare three additional AdamW epochs with three additional SAM epochs, holding
 data, batches, learning rate, weight decay, seed, model, gradient clipping,

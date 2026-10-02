@@ -15,6 +15,14 @@ The project now includes an **M1/M2 experiment path**: broader retrieval metrics
 a SASRec-style baseline, three-seed comparisons, and controlled AdamW/SAM
 continuations. We stop at M2 for the [learning checkpoint](docs/learning_checkpoint_m2.md).
 
+**M2 completed on 2026-10-03:** three seeds, all 22,225 eligible test users, and
+cutoffs 10/20/50/100/200. Generative + AdamW6 reached mean Recall@100 **0.18106**
+and MAP@20 **0.02120**; SASRec reached **0.22956** and **0.03739**. SAM did not
+improve Recall@100 or MAP@20 over the AdamW controls in this configuration. Read the
+[complete results](docs/m2_results.md) and [M1 validation results](docs/m1_results.md).
+The selected checkpoints and per-user rankings are saved locally under `results/m2/`.
+Implementation pauses at the M2 learning checkpoint.
+
 ## Start here
 
 The current workspace already has a local `.venv`. From PowerShell in the project
@@ -279,7 +287,9 @@ training/evaluation/checkpoint round trip.
 The initial M0 pipeline was validated on 2026-10-02 with Python 3.12.14 and CPU
 PyTorch: 42 tests passed. M1/M2 extend the tests with hand-worked metrics, paired
 evaluation, causal SASRec, batched decoding, SAM, and experiment orchestration.
-Run the checks above for the current count.
+Both local and RTX 5090 environments passed 159 tests and Ruff for the completed
+M2 run. GPU PyTorch was 2.12.1+cu130; its observed package list is saved in
+`results/runtime-requirements.txt`.
 
 The original dataset contains 198,502 reviews from 22,363 users. Preparation
 produced 131,413 training examples and 12,068 warm catalog items. All items have
