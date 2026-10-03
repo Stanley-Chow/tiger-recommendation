@@ -190,6 +190,18 @@ complete codeword set and model capacity. All selected checkpoint hashes are
 recorded before test retrieval. The primary contrasts measure semantic codes
 against their matched permutation controls; RQ versus HKM is secondary.
 
+![M3 structure: metadata tokenizers and permutation controls, matched Transformer training, validation selection, and frozen full-test retrieval](docs/figures/m3_architecture.svg)
+
+**M3 experiment structure.** Metadata reconstruction fits RQ separately from
+next-item prediction. The four code mappings share generator capacity; all
+twelve selected checkpoints are frozen before test retrieval. See the
+[detailed caption](docs/figures/m3_architecture.caption.md).
+
+[Paper PDF](docs/figures/m3_architecture.pdf) ·
+[Editable SVG](docs/figures/m3_architecture.svg) ·
+[300-dpi PNG](docs/figures/m3_architecture.png) ·
+[Figure source](scripts/draw_m3_architecture.py)
+
 After the full study finishes, audit its saved checkpoints and every ranking,
 then export the results figure (requires the `figures` extra):
 
