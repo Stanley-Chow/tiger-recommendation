@@ -1,9 +1,14 @@
 # M3 frozen protocol: semantic alignment and learned residual quantization
 
 Frozen design dated 2026-10-03, before M3 recommendation results. This is a
-repository protocol, not an external preregistration. Status: planned; completion
+repository protocol, not an external preregistration. Status at freeze: planned; completion
 requires the evidence below. M2 test results are already known, so this is a
 prospective comparison on a previously evaluated dataset, not a new blinded test.
+
+Completion record added 2026-10-03: all twelve recommenders and three full-seed
+evaluations finished and passed the independent artifact audit. See
+[M3 results](m3_results.md) and the [learning checkpoint](learning_checkpoint_m3.md).
+The frozen scientific design below was followed without result-dependent tuning.
 
 ## Material Passport
 

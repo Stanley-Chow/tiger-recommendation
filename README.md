@@ -8,21 +8,27 @@ hierarchical k-means; M3 adds a separately trained residual quantization
 autoencoder and controlled code-permutation experiments. It generates product
 codes, not natural-language product descriptions.
 
-![M2 architecture: offline metadata-to-code tokenizer, trainable encoder-decoder Transformer, teacher-forced loss, and constrained beam search for ranked products](docs/figures/model_architecture.svg)
+![Current M3 architecture: frozen metadata vectors, HKM and learned RQ tokenizers with permutation controls, matched Transformer training and constrained retrieval](docs/figures/m3_architecture.svg)
 
-**Model architecture at M2.** Frozen MiniLM embeddings and hierarchical k-means
-assign each product three cluster tokens plus a unique within-leaf suffix `u`.
+**Current model architecture at M3.** Frozen MiniLM embeddings feed hierarchical
+k-means or a separately trained residual quantization autoencoder. Each assigns
+three semantic tokens plus a unique within-prefix suffix `u`.
 The Transformer reads the latest 20 items as semantic codes and predicts the next
 item's code. Training uses the true code prefix and token cross entropy; inference
 uses generated prefixes, a catalog trie, and beam search to rank unseen products.
-Only the Transformer is trained. Its encoder and decoder share input embeddings;
+RQ metadata fitting and Transformer next-item training have separate objectives.
+The Transformer's encoder and decoder share input embeddings;
 the output projection has separate weights. Catalog constraints apply during
 inference, and exclusion covers all earlier seen items.
 
-[Paper PDF](docs/figures/model_architecture.pdf) ·
-[Editable SVG](docs/figures/model_architecture.svg) ·
-[300-dpi PNG](docs/figures/model_architecture.png) ·
-[Figure source](scripts/draw_architecture.py)
+[Paper PDF](docs/figures/m3_architecture.pdf) ·
+[Editable SVG](docs/figures/m3_architecture.svg) ·
+[300-dpi PNG](docs/figures/m3_architecture.png) ·
+[Figure source](scripts/draw_m3_architecture.py) ·
+[Detailed caption](docs/figures/m3_architecture.caption.md)
+
+The earlier M2 architecture remains available as [PDF](docs/figures/model_architecture.pdf)
+and [SVG](docs/figures/model_architecture.svg).
 
 The project includes an **M1/M2 experiment path**: broader retrieval metrics,
 a SASRec-style baseline, three-seed comparisons, and controlled AdamW/SAM
@@ -35,11 +41,15 @@ and MAP@20 **0.02120**; SASRec reached **0.22956** and **0.03739**. SAM did not
 improve Recall@100 or MAP@20 over the AdamW controls in this configuration. Read the
 [complete results](docs/m2_results.md) and [M1 validation results](docs/m1_results.md).
 The selected checkpoints and per-user rankings are saved locally under `results/m2/`.
-**M3 is in progress:** a controlled tokenizer study compares hierarchical k-means
-and learned RQ-VAE codes with their respective shuffled-code controls. All arms
-share the data, Transformer, vocabulary capacity, and selection/evaluation rules.
-Read the [frozen M3 protocol](docs/m3_protocol.md). The figure above shows the M2
-baseline; M3 changes the item tokenizer and uses a common padded vocabulary.
+**M3 completed and verified on 2026-10-03:** four arms × three seeds, all 22,225
+eligible test users. Mean Recall@100 is **16.535% for HKM** and **16.205% for RQ**;
+MAP@20 is **1.845%** and **1.793%**. Both aligned code mappings substantially
+outperform their matched permutation controls. RQ shows no consistent advantage
+over HKM in this configuration. Read the [results](docs/m3_results.md),
+[frozen protocol](docs/m3_protocol.md) and [M3 learning checkpoint](docs/learning_checkpoint_m3.md).
+All 12 checkpoints and every saved ranking passed the independent audit;
+large artifacts are local under `results/m3/`. M3 rental cost was ¥6.19,
+cumulative project cost ¥10.68; the experiment GPU is stopped and its key removed.
 
 ## Start here
 
@@ -190,25 +200,34 @@ complete codeword set and model capacity. All selected checkpoint hashes are
 recorded before test retrieval. The primary contrasts measure semantic codes
 against their matched permutation controls; RQ versus HKM is secondary.
 
-![M3 structure: metadata tokenizers and permutation controls, matched Transformer training, validation selection, and frozen full-test retrieval](docs/figures/m3_architecture.svg)
+![M3 test results: aligned HKM and RQ outperform whole-code permutations on Recall@100 and MAP@20; points show three seeds and whiskers sample SD](docs/figures/m3_tokenizer_ablation.svg)
 
-**M3 experiment structure.** Metadata reconstruction fits RQ separately from
-next-item prediction. The four code mappings share generator capacity; all
-twelve selected checkpoints are frozen before test retrieval. See the
-[detailed caption](docs/figures/m3_architecture.caption.md).
+**M3 results.** Points show three pipeline seeds, and whiskers show sample SD.
+Users are shared across seeds. See the [results and paired intervals](docs/m3_results.md)
+and [figure caption](docs/figures/m3_tokenizer_ablation.caption.md).
 
-[Paper PDF](docs/figures/m3_architecture.pdf) ·
-[Editable SVG](docs/figures/m3_architecture.svg) ·
-[300-dpi PNG](docs/figures/m3_architecture.png) ·
-[Figure source](scripts/draw_m3_architecture.py)
+[Results PDF](docs/figures/m3_tokenizer_ablation.pdf) ·
+[Editable SVG](docs/figures/m3_tokenizer_ablation.svg) ·
+[300-dpi PNG](docs/figures/m3_tokenizer_ablation.png) ·
+[Figure source](scripts/plot_m3_results.py)
 
-After the full study finishes, audit its saved checkpoints and every ranking,
-then export the results figure (requires the `figures` extra):
+To repeat the completed artifact audit and export the results figure locally
+(plotting requires the `figures` extra):
 
 ```powershell
 python scripts/verify_m3_results.py --run-dir results/m3 --project-dir .
 python scripts/plot_m3_results.py --run-dir results/m3 --output-dir docs/figures
 ```
+
+Try a returned RQ checkpoint on the CPU, supplying warm-catalog ASINs in time order:
+
+```powershell
+.\.venv\Scripts\python.exe -m beautyrec recommend --checkpoint results/m3/seeds/seed_42/rqvae/best.pt --artifact-dir results/m3/arms/seed_42/rqvae --history B007IY97U0 B00870XLDS B008MIRO88 B00BQYYMN0 --beam-size 200 --top-k 20 --device cpu
+```
+
+The returned artifacts preserve their recorded Linux paths. The audit maps them
+in memory; inference uses the explicit local checkpoint and artifact paths above.
+Use a new run directory for any new training configuration.
 
 The [M3 learning checkpoint](docs/learning_checkpoint_m3.md) includes the study
 flowchart, residual-quantization math, gradient routing, and interpretation guide.

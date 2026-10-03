@@ -1,0 +1,65 @@
+{
+  "results_file": "D:\\Stanley HKU\\HKU UG Y2\\\u63a8\u8350\u7cfb\u7edf\\Gen Recom System Project\\results\\m3\\results.json",
+  "results_sha256": "5c9caa18fff664243fc21545e0babf7708b7e8ca9339e7e9ce8550ff127fa0cf",
+  "protocol_fingerprint": "25bcc887529575fe23d98da696885d87ec0bc2c7722ff0b31dad6841a4aab58b",
+  "tokenizer_manifest_fingerprint": "969d42726c3cc6c59257bbd90419881b10700bd2527422ede7dee41f1b306c63",
+  "m3_complete": true,
+  "diagnostic_only": false,
+  "explicit_smoke_preview": false,
+  "pipeline_seeds": [
+    42,
+    43,
+    44
+  ],
+  "arms": [
+    "hkm",
+    "hkm_permuted",
+    "rqvae",
+    "rqvae_permuted"
+  ],
+  "seed_values": {
+    "recall@100": [
+      [
+        0.1594150731158605,
+        0.0681214848143982,
+        0.1689538807649044,
+        0.06141732283464567
+      ],
+      [
+        0.16440944881889763,
+        0.06767154105736783,
+        0.1494263217097863,
+        0.06753655793025871
+      ],
+      [
+        0.1722384701912261,
+        0.07050618672665916,
+        0.16778402699662542,
+        0.05876265466816648
+      ]
+    ],
+    "map@20": [
+      [
+        0.017559492961781623,
+        0.007662998874273947,
+        0.018877539999139666,
+        0.00686033274335433
+      ],
+      [
+        0.01870092129291941,
+        0.005861836685519331,
+        0.016223419742702475,
+        0.006208827706426494
+      ],
+      [
+        0.019081342691185305,
+        0.007020233429715325,
+        0.018691733977900905,
+        0.005378298257072898
+      ]
+    ]
+  },
+  "spread": "sample standard deviation across pipeline seeds; undefined for one seed",
+  "contexts_sha256": "248c1556545e40eb0b8c72337d10eb5fd9b31113e1af1af9b6f252a78e8788df",
+  "test_examples": 22225
+}

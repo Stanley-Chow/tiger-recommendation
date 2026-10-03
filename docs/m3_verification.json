@@ -1,0 +1,76 @@
+{
+  "status": "verified_full_m3",
+  "completed_date": "2026-10-03",
+  "executed_source_commit": "3d0e89f6346832a652231df05a79f72a495998eb",
+  "implementation_commit": "66cb1b2e4f2532bbb5b8f5bd4ab279ee33886eea",
+  "source_archive_sha256": "ecd1201e55f87b680d3568d1f95ff00506711c27063c1e4f52c5fa161d8b26fc",
+  "results_archive_sha256": "f537a40dcdc2d3ab62d62ac9378c53b486623d5522b81a492075884c43e17f00",
+  "completion_sha256": "1a6dc09a32a368295190b71e1b6fb5db8e641cc881520ebeeff6478562bf26d0",
+  "results_sha256": "5c9caa18fff664243fc21545e0babf7708b7e8ca9339e7e9ce8550ff127fa0cf",
+  "protocol_fingerprint": "25bcc887529575fe23d98da696885d87ec0bc2c7722ff0b31dad6841a4aab58b",
+  "full_artifact_checks": [
+    "complete relative-file hashes and frozen protocol/config",
+    "current local source and unchanged input SHA-256 hashes",
+    "all tokenizer hashes, full catalog, unchanged HKM, common V and bijective controls",
+    "checkpoint tensor counts/shapes, data, fresh training and guard selection",
+    "all saved validation/test rankings and reconstructed metrics, coverage and tail metrics"
+  ],
+  "selected_checkpoints": 12,
+  "generator_parameter_count": 697221,
+  "common_vocab_size": 133,
+  "ranking_context_rows_checked": 334419,
+  "test_users_per_seed": 22225,
+  "validation_users_per_arm": 22312,
+  "completed_inventory_files_verified_after_copy": 209,
+  "supplementary_checks": [
+    "top-level means and sample SD independently reconstructed",
+    "embedded seed/test/training/tokenizer/bootstrap copies agree",
+    "all contrast point estimates and paired-bootstrap metadata agree",
+    "recommender epoch/update/time/memory arithmetic agrees",
+    "RQ metadata selection/full-refit budgets and timing agree",
+    "captured hardware and runtime requirements preserved"
+  ],
+  "aggregate_metric_pairs_checked": 252,
+  "bootstrap_intervals_point_and_metadata_checked": 900,
+  "bootstrap_draws_recreated": false,
+  "hardware": {
+    "python": "3.12.3",
+    "torch": "2.12.1+cu130",
+    "cuda": "13.0",
+    "gpu": "NVIDIA GeForce RTX 5090 D",
+    "capability": [
+      12,
+      0
+    ],
+    "total_gpu_memory_bytes": 33670758400,
+    "driver": "595.71.05"
+  },
+  "runtime_requirements_sha256": "97e001285f87b114926f6e77beec72813dc43a18a3362c3ef435fe7027a6235d",
+  "gpu_preflight": {
+    "tests_passed": 222,
+    "ruff_passed": true
+  },
+  "cpu_portability_check": {
+    "training_histories_checked": 3,
+    "unseen_unique_candidates_per_history": 200,
+    "test_labels_used": false
+  },
+  "settled_rental_cost_rmb": 6.19,
+  "prior_m2_cost_rmb": 4.49,
+  "cumulative_project_cost_rmb": 10.68,
+  "rental_period_local": {
+    "start": "2026-10-03 12:31:21",
+    "end": "2026-10-03 14:44:49",
+    "timezone": "Asia/Shanghai"
+  },
+  "cleanup": {
+    "experiment_instance_stopped": true,
+    "temporary_account_key_removed": true,
+    "exact_instance_key_removed_from": "authorized_keys2",
+    "fresh_publickey_login_rejected": true,
+    "temporary_local_key_files_removed": true,
+    "other_instances_accessed_or_changed": false
+  },
+  "large_artifacts": "Local results/m3; excluded from Git",
+  "verification_does_not_train_or_decode": true
+}

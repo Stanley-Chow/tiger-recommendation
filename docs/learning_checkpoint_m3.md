@@ -2,8 +2,9 @@
 
 M3 asks whether semantic item codes help the generative recommender, and whether
 a learned residual quantizer is a useful replacement for hierarchical k-means.
-Start with the [frozen experiment protocol](m3_protocol.md). Results and a final
-interpretation will be added after all planned runs and evaluations finish.
+Completed and independently verified on 2026-10-03. Start with the
+[frozen experiment protocol](m3_protocol.md), then read the [actual results](m3_results.md).
+Implementation pauses at this learning checkpoint before another milestone.
 
 ## What changes from M2
 
@@ -67,6 +68,24 @@ flowchart TD
    intervals. A difference between RQ and HKM also includes differences in code
    geometry, suffix burden, search difficulty, and tokenizer capacity.
 
+## Read the diagnostic numbers
+
+The [actual tokenizer diagnostics](m3_tokenizer_diagnostics.md) are ready. Convert
+a reconstruction squared-L2 sum of about 0.468 into coordinate MSE by dividing
+by 384: about 0.001219. For a unit-normalized vector, an all-zero reconstruction
+has coordinate MSE 1/384. These numbers describe metadata reconstruction;
+recommendation quality requires the separate retrieval experiment.
+
+The common vocabulary has 133 tokens, compared with M2's 94. Each additional
+token adds 128 input-embedding weights, 128 output-projection weights and one
+output bias. Check `(133 - 94) * (128 + 128 + 1) = 10,023`: M3's generator has
+697,221 parameters instead of 687,198. The capacity match applies within M3;
+the earlier M2 run is contextual evidence rather than its matched control.
+
+Open the [paper-style M3 schematic](figures/m3_architecture.pdf) beside the
+code. Follow the solid data arrows and the dashed frozen-artifact arrows before
+reading the two objectives or the final contrasts.
+
 ## Questions to answer from the saved results
 
 - Does each semantic tokenizer beat its matched shuffled-code control on
@@ -79,6 +98,32 @@ flowchart TD
   item identification rather than semantic sharing?
 - How much offline fitting and online retrieval cost does each tokenizer add?
 - What evidence would justify a larger codebook, a new dataset, or a reranker?
+
+## Work through the actual experiment
+
+Read [the M3 results](m3_results.md) beside the frozen protocol. Start with the
+two primary comparisons: HKM minus HKM-permuted gains 9.659 Recall@100 percentage
+points on average; RQ minus RQ-permuted gains 9.948. Identify the exact matched
+properties in the saved artifacts, then explain why changed interaction-weighted
+code frequencies prevent a pure semantic causal interpretation.
+
+Next inspect RQ minus HKM by seed: +0.954, −1.498 and −0.445 Recall@100 points.
+Its average is −0.330, with sample SD 1.230. Explain why a positive result for
+seed 42 is insufficient to choose RQ as the better tokenizer. The within-seed
+bootstrap interval addresses a different uncertainty from the three-seed SD.
+Neither the mixed result nor overlapping seed distributions establish equivalence.
+
+Verify the MAP guard in one `best_validation.json` and `training_summary.json`.
+The chosen epoch must maximize Recall@100 among qualifying epochs on the fixed
+1,000-user validation cohort. The 0.543975% floor is validation popularity;
+the 0.416% test-popularity MAP@20 belongs to a different cohort. Explain why
+the guard is a selection constraint rather than a guarantee for future users.
+
+Finally, open one saved test ranking. Locate its target among the 200 unseen
+products and reconstruct Recall@10/100/200 and MAP@20 from that one list. A
+target at rank 37 contributes 0/1/1 to those recall cutoffs and zero to MAP@20;
+at rank 7 it contributes 1/1/1 and 1/7. Connect this calculation to teacher
+forcing, full-vocabulary token probabilities and trie-constrained beam search.
 
 M3 completion means the controlled study is implemented, verified, and reported.
 Improvement over HKM or SASRec is an experimental outcome, not a completion rule.
