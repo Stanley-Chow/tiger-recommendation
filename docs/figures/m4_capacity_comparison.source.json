@@ -1,0 +1,12 @@
+{
+  "results_sha256": "a2d2fee9faf396565aaa2996f7f202bc34cf11ff2c37f273c23cb37cfc06a89b",
+  "protocol_fingerprint": "87d9147ae09625c6e6fbf7f2daeed6fe31cce040251589e57ad429ae4b0eac78",
+  "contexts_sha256": "248c1556545e40eb0b8c72337d10eb5fd9b31113e1af1af9b6f252a78e8788df",
+  "pipeline_seeds": [
+    42,
+    43,
+    44
+  ],
+  "test_examples": 22225,
+  "common_vocab_size": 163
+}

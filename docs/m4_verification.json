@@ -1,0 +1,63 @@
+{
+  "status": "verified_full_m4",
+  "selected_checkpoints": 6,
+  "generator_parameter_count": 704931,
+  "ranking_context_rows_checked": 200547,
+  "search_diagnostic_rows_checked": 6000,
+  "aggregate_metric_pairs_checked": 150,
+  "common_vocab_size": 163,
+  "test_users_per_seed": 22225,
+  "validation_users_per_arm": 22312,
+  "completion_sha256": "f22a212e8a2f50114be2e48dccf37669adc88cfdd37bb6cf50541546d1b62b69",
+  "results_sha256": "a2d2fee9faf396565aaa2996f7f202bc34cf11ff2c37f273c23cb37cfc06a89b",
+  "bootstrap_draws_recreated": false,
+  "milestone": "M4",
+  "executed_source_commit": "3da6b14bf3b7b3a9a6397a179df9cc219273314c",
+  "source_archive_sha256": "1c6c1bd399dd417f5379cc9c6d8d35ca462665e66916ddffdaac7147c03da7b8",
+  "result_archive_sha256": "a1907c07c70890a316c55b10116b541963a67460b85c8370486375fb83959735",
+  "selection_manifest_sha256": "82b20097bf118c2ff99e926b146f3de17a84b5c5357e6703cc05622348ebd646",
+  "protocol_fingerprint": "87d9147ae09625c6e6fbf7f2daeed6fe31cce040251589e57ad429ae4b0eac78",
+  "inventory_files": 183,
+  "inventory_bytes": 836035040,
+  "copied_inventory_hashes_verified": 183,
+  "source_python_files_verified": 22,
+  "cpu_preflight_tests_passed": 225,
+  "gpu_environment": {
+    "python": "3.12.3",
+    "torch": "2.12.1+cu130",
+    "cuda": "13.0",
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "capability": [
+      12,
+      0
+    ],
+    "gpu_memory_bytes": 33670758400,
+    "driver": "595.71.05",
+    "gpu_preflight_tests_passed": 225,
+    "gpu_preflight_test_seconds": 6.99,
+    "ruff_passed": true
+  },
+  "gpu_runtime_requirements_sha256": "3827203bbf58a45614e134f8102daeaa785b4731de6c8d835adcd77356f41d12",
+  "artifact_paths_preserved": true,
+  "rental": {
+    "budget_rmb": 50,
+    "new_settled_rmb": 4.13,
+    "previous_project_rmb": 10.68,
+    "cumulative_project_rmb": 14.81,
+    "started_local": "2026-10-14 02:07:18",
+    "stopped_local": "2026-10-14 03:36:34",
+    "timezone": "Asia/Shanghai",
+    "gpu_stopped": true,
+    "account_key_removed": true,
+    "active_instance_key_removed": true,
+    "fresh_publickey_login_rejected": true,
+    "local_temporary_key_files_removed": true
+  },
+  "returned_checkpoint_cpu_inference_verified": {
+    "seed": 42,
+    "arm": "rq32",
+    "beam_size": 200,
+    "top_k": 5,
+    "valid_catalog_recommendations": 5
+  }
+}

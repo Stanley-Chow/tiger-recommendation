@@ -5,12 +5,13 @@ A readable first implementation of semantic-ID next-item retrieval.
 This is a **simplified TIGER-style system** using a small PyTorch Transformer and
 MiniLM metadata embeddings rather than Sentence-T5. The M2 baseline uses
 hierarchical k-means; M3 adds a separately trained residual quantization
-autoencoder and controlled code-permutation experiments. It generates product
+autoencoder and controlled code-permutation experiments. M4 compares 16-entry
+and 32-entry residual codebooks with equal-capacity generators. It generates product
 codes, not natural-language product descriptions.
 
 ![Current M3 architecture: frozen metadata vectors, HKM and learned RQ tokenizers with permutation controls, matched Transformer training and constrained retrieval](docs/figures/m3_architecture.svg)
 
-**Current model architecture at M3.** Frozen MiniLM embeddings feed hierarchical
+**Model architecture introduced at M3.** Frozen MiniLM embeddings feed hierarchical
 k-means or a separately trained residual quantization autoencoder. Each assigns
 three semantic tokens plus a unique within-prefix suffix `u`.
 The Transformer reads the latest 20 items as semantic codes and predicts the next
@@ -50,6 +51,17 @@ over HKM in this configuration. Read the [results](docs/m3_results.md),
 All 12 checkpoints and every saved ranking passed the independent audit;
 large artifacts are local under `results/m3/`. M3 rental cost was ¥6.19,
 cumulative project cost ¥10.68; the experiment GPU is stopped and its key removed.
+
+**M4 completed and verified on 2026-10-14:** six fresh models compare 16-entry
+and 32-entry RQ codebooks across three paired pipeline seeds. With equal
+generator capacity, mean full-test Recall@100 increases from **15.585% to
+17.375%**, and MAP@20 from **1.708% to 1.991%**. The independent audit passed
+all six checkpoints, 200,547 ranking context rows and 6,000 search-diagnostic
+rows. Read the [M4 results](docs/m4_results.md) and stop at the
+[M4 learning checkpoint](docs/learning_checkpoint_m4.md). Rental cost was
+**¥4.13 of the ¥50 budget**, cumulative project cost **¥14.81**; the dedicated
+GPU is stopped and temporary SSH access removed. Full artifacts are local in
+`results/m4/`.
 
 ## Start here
 
@@ -242,6 +254,66 @@ See the [protocol](docs/m3_protocol.md) and
 [M3 learning checkpoint](docs/learning_checkpoint_m3.md). `configs/m3_smoke.json`
 is a limited synthetic diagnostic configuration and cannot complete M3.
 
+## M4: codebook capacity and search diagnosis
+
+M4 compares three 16-entry residual codebooks with three 32-entry codebooks,
+using three paired pipeline seeds. All six tokenizers are fitted before
+recommendation training. Common semantic ranges start at 3/35/67; suffixes start
+at 99. The largest collision group has 64 products, so all six generators use
+vocabulary 163 and exactly **704,931 parameters**. The larger tokenizer adds
+1,536 offline codebook parameters. Training starts from fresh generator weights.
+
+```mermaid
+flowchart LR
+    A[Frozen metadata vectors] --> B[Six RQ fits: K=16/32 x seeds 42/43/44]
+    B --> C[Common token ranges and vocabulary]
+    C --> D[Six matched Transformers]
+    D --> E[Recall at 100 selection with MAP at 20 guard]
+    E --> F[Freeze every selected checkpoint hash]
+    F --> G[Validation token and beam 200/400 diagnostics]
+    F --> H[Full test retrieval: fixed beam 200]
+    G --> I[Paired results and learning checkpoint]
+    H --> I
+```
+
+The [frozen protocol](docs/m4_protocol.md) specifies the comparison before results.
+The [M4 learning checkpoint](docs/learning_checkpoint_m4.md) explains capacity
+matching, token likelihoods, search certificates and uncertainty.
+
+![M4 test quality and paired Recall at 100 differences: RQ-32 improves all three seeds](docs/figures/m4_capacity_comparison.svg)
+
+Read the [results and limitations](docs/m4_results.md),
+[complete numeric tables](docs/m4_numeric_tables.md),
+[verification record](docs/m4_verification.json), and
+[figure caption](docs/figures/m4_capacity_comparison.caption.md).
+The three-seed Recall@100 difference is **+1.791 ± 0.243 percentage points**
+(mean ± sample SD). Conditional user intervals and pipeline variation measure
+different uncertainty; these test users were previously evaluated in M2/M3.
+
+[Results PDF](docs/figures/m4_capacity_comparison.pdf) ·
+[Editable SVG](docs/figures/m4_capacity_comparison.svg) ·
+[300-dpi PNG](docs/figures/m4_capacity_comparison.png) ·
+[Figure source](scripts/plot_m4_results.py)
+
+```powershell
+python scripts/run_m4.py --config configs/m4.json --run-dir results/m4 --device cuda
+python scripts/verify_m4_results.py --run-dir results/m4 --project-dir .
+python scripts/summarize_m4_results.py --run-dir results/m4 --output-dir docs
+python scripts/plot_m4_results.py --run-dir results/m4 --output-dir docs/figures
+```
+
+Training needs the prepared Beauty inputs and a compatible CUDA environment.
+The AutoDL launcher is `scripts/run_m4_gpu.sh`; its shell must have the intended
+Python runtime on `PATH`. A process timeout does not stop paid GPU billing:
+configure the provider shutdown timer before launching. Audit, summary export
+and plotting run locally on CPU after artifact return.
+
+Try the returned seed-42 RQ-32 checkpoint on CPU:
+
+```powershell
+python -m beautyrec recommend --checkpoint results/m4/seeds/seed_42/rq32/best.pt --artifact-dir results/m4/arms/seed_42/rq32 --history B007IY97U0 B00870XLDS B008MIRO88 B00BQYYMN0 --beam-size 200 --top-k 20 --device cpu
+```
+
 ## Understand the code
 
 | Module | Responsibility |
@@ -262,6 +334,8 @@ is a limited synthetic diagnostic configuration and cannot complete M3.
 | `src/beautyrec/optimizers.py` | Two-pass SAM with exact parameter restoration |
 | `src/beautyrec/experiment_training.py` | Shared M2 training, validation guards and continuations |
 | `src/beautyrec/benchmark.py` | Reproducible multi-seed experiment orchestration and reports |
+| `src/beautyrec/m4_benchmark.py` | Common token ranges, six fresh fits, frozen selection and capacity comparison |
+| `src/beautyrec/m4_diagnostics.py` | Validation token likelihoods, prefix coverage and search-ranking certificates |
 | `src/beautyrec/m3_benchmark.py` | Frozen tokenizer controls, common capacity and M3 orchestration |
 | `src/beautyrec/cli.py` | Thin command-line orchestration |
 
@@ -361,6 +435,7 @@ results/demo/             Synthetic diagnostic artifacts
 results/m1/               Broader evaluation of the initial checkpoint
 results/m2/               Frozen protocol, seed runs, rankings and comparison report
 results/m3/               RQ fits, tokenizer manifests, four-arm seed runs and planned contrasts
+results/m4/               Six RQ fits, matched generators, search diagnostics and paired contrasts
 ```
 
 Catalog, tokenizer and interaction-file checksums prevent silently mixing a
@@ -391,9 +466,11 @@ Both local and RTX 5090 environments passed 159 tests and Ruff for the completed
 M2 run. GPU PyTorch was 2.12.1+cu130; its observed package list is saved in
 `results/runtime-requirements.txt`.
 
-The M3 implementation passed **222 local CPU tests** and Ruff on 2026-10-03,
-plus a real four-arm end-to-end synthetic smoke run. Full M3 GPU experiments
-remain pending; synthetic smoke scores do not establish Amazon performance.
+The M3 implementation passed **222 local CPU and GPU tests** and Ruff on
+2026-10-03, a real four-arm synthetic smoke run, and the full Amazon study.
+M4 passed **225 local CPU and GPU tests** and Ruff on 2026-10-14, plus a real
+two-arm synthetic run and an independent audit of its returned artifacts.
+Synthetic smoke scores do not establish Amazon performance.
 
 The original dataset contains 198,502 reviews from 22,363 users. Preparation
 produced 131,413 training examples and 12,068 warm catalog items. All items have
