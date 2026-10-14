@@ -105,6 +105,12 @@ data, seeds, optimizer, batch sizes and evaluation remain fixed. Record actual
 runtime hardware and numerical environment; cross-hardware bitwise equality is
 not assumed. Keep the same budget and provider shutdown requirement.
 
+Second pre-training hardware amendment: the displayed 4090 slot was exhausted
+before rental. The user approved a dedicated RTX PRO 6000 at ¥6.98/hour with
+a 4.5-hour maximum rental window (about ¥31.41 new spend). Instance
+`3hy7n2qhcg-e44522b7` has a provider shutdown deadline of 2026-10-14 17:15
+Shanghai time. Model/data/evaluation settings are unchanged.
+
 After completion, stop for the learning/code-review session. Additional datasets,
 new foundation models, exact-search studies and new optimizer arms remain
 separate research decisions supported by the M5 evidence.

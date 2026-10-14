@@ -10,6 +10,12 @@ are still pending. See the [frozen M5 protocol](docs/m5_protocol.md),
 [run instructions](docs/m5_reproduction.md), and
 [code-review checkpoint](docs/learning_checkpoint_m5.md).
 
+![M5 temporal model and content retrieval architecture](docs/figures/m5_architecture.svg)
+
+[M5 paper PDF](docs/figures/m5_architecture.pdf) ·
+[Editable SVG](docs/figures/m5_architecture.svg) ·
+[Detailed caption](docs/figures/m5_architecture.caption.md)
+
 This is a **simplified TIGER-style system** using a small PyTorch Transformer and
 MiniLM metadata embeddings rather than Sentence-T5. The M2 baseline uses
 hierarchical k-means; M3 adds a separately trained residual quantization
