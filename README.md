@@ -376,8 +376,11 @@ Let $c(i)=(c_1,\ldots,c_L)$ be item $i$'s code and $h$ the user's past history.
 The Transformer minimizes teacher-forced token cross entropy:
 
 $$
-\mathcal L = -\sum_{t=1}^{L+1}\log p_\theta(c_t\mid c_{<t},h),
-\qquad c_{L+1}=\mathrm{EOS}.
+\mathcal{L}=
+-\sum_{t=1}^{L+1}
+\log p_\theta(c_t \mid c_{\lt t}, h),
+\qquad
+c_{L+1}=\mathrm{EOS}.
 $$
 
 The decoder input is `BOS + item code`; the labels are `item code + EOS`.
