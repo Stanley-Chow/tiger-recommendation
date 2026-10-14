@@ -1,6 +1,14 @@
-# Generative recommendation on Amazon 2014 Beauty
+# Generative recommendation on Amazon Beauty
 
 A readable first implementation of semantic-ID next-item retrieval.
+
+**M5 is in progress:** a separate Amazon Reviews 2023 temporal cohort extends the
+2014 study with warm/new-item evaluation, a frozen content retrieval branch,
+fixed rank fusion, and portable CLI/HTTP inference. The implementation passes
+235 CPU checks, including a complete offline two-model demo. Amazon GPU results
+are still pending. See the [frozen M5 protocol](docs/m5_protocol.md),
+[run instructions](docs/m5_reproduction.md), and
+[code-review checkpoint](docs/learning_checkpoint_m5.md).
 
 This is a **simplified TIGER-style system** using a small PyTorch Transformer and
 MiniLM metadata embeddings rather than Sentence-T5. The M2 baseline uses

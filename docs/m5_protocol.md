@@ -99,6 +99,12 @@ settled spend is ¥14.81, leaving ¥35.19. Set a provider shutdown timer, return
 and verify artifacts, stop the GPU, remove account/instance/local temporary keys,
 and record settled billing. Do not call M5 complete after merely launching a run.
 
+Hardware amendment before training, 2026-10-14: the user approved a dedicated
+RTX 4090 (24 GB) fallback because 5090 rentals were unavailable. Architecture,
+data, seeds, optimizer, batch sizes and evaluation remain fixed. Record actual
+runtime hardware and numerical environment; cross-hardware bitwise equality is
+not assumed. Keep the same budget and provider shutdown requirement.
+
 After completion, stop for the learning/code-review session. Additional datasets,
 new foundation models, exact-search studies and new optimizer arms remain
 separate research decisions supported by the M5 evidence.
