@@ -74,9 +74,9 @@ on test data. Each method receives the same eligible targets and exclusions.
 Report warm/new target cohorts separately. Hybrid new-item capability belongs
 to its explicit content route, not to the closed-catalog generator alone.
 
-Per seed, save 1,000 paired user-bootstrap resamples and confidence intervals
-for the prespecified comparisons. Report three-seed means and sample SD without
-pooling repeated users. Dataset shifts, changed catalogs and time splits prevent
+Per seed, use 1,000 paired user-bootstrap resamples and save confidence intervals
+and the resampling seed for the prespecified comparisons. Report three-seed means
+and sample SD without pooling repeated users. Dataset shifts, changed catalogs and time splits prevent
 direct score comparisons with Beauty 2014 from being interpreted as improvement.
 
 The prespecified mixed-catalog contrasts are generative+content minus generative,

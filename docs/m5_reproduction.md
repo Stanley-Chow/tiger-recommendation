@@ -6,6 +6,11 @@ in [m5.json](../configs/m5.json). Completion requires actual three-seed results,
 an independent audit, and resource cleanup. A synthetic demo never counts as
 the Amazon experiment.
 
+The [M5 dataset card](m5_data_card.md) explains the prepared cohort and the
+45.65% available-catalog first-target coverage. Historical metadata and
+cross-hardware numerical reproducibility are separate limitations; see
+[PyTorch's reproducibility notes](https://docs.pytorch.org/docs/2.14/notes/randomness.html).
+
 ## Offline end-to-end demo
 
 From a fresh checkout, create a Python environment and install the core and
@@ -31,6 +36,15 @@ It runs on a CPU without internet access. Demo accuracy has no scientific value.
 The `--allow-diagnostic` switch permits auditing this explicit smoke run; it
 does not upgrade the run to a completed milestone.
 
+The multiline examples above use POSIX shell continuation. In PowerShell, use
+backticks instead of backslashes, or keep each command on one line. For example:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/demo_m5.py
+.\.venv\Scripts\python.exe scripts/recommend_m5.py `
+  --bundle results/m5_demo/run/bundle --history W0 W1 --top-k 5
+```
+
 ## Amazon 2023 experiment
 
 ```bash
@@ -38,7 +52,7 @@ python -m pip install -e '.[dev,text]'
 python scripts/prepare_m5.py download
 python scripts/prepare_m5.py prepare
 python scripts/run_m5.py --device cuda
-python scripts/verify_m5_results.py
+python scripts/verify_m5_results.py > results/m5-verification.json
 ```
 
 The download is approximately 1.27 GB compressed. Downloading and preprocessing
@@ -98,6 +112,17 @@ The serving seed is fixed to 42 before evaluation. The service does not select
 the seed or strategy with the best test score. Histories containing only new
 items return no closed-model candidates; hybrids can use the content branch.
 
+To check a returned Amazon bundle on a CPU, including all five strategies,
+seen-item exclusion, and the HTTP error for an unknown ASIN, run:
+
+```bash
+python scripts/verify_m5_service.py
+```
+
+The saved [real inference example](examples/m5_inference.json) uses a constructed
+history of public catalog products, rather than a user's review history. It
+demonstrates functionality and is separate from the accuracy evaluation.
+
 ## Review evidence
 
 Start with `statistics.json` and `protocol.json`, then `selection_manifest.json`,
@@ -106,3 +131,9 @@ audit reconstructs temporal contexts from complete cohort events, checks model
 selection against the MAP guard, recalculates scalar metrics, repeats bootstrap
 calculations, and verifies checksums. Dataset provenance hashes identify the
 downloaded files; they are local hashes, not publisher-signed authenticity proofs.
+
+After a full audit, install the `figures` extra and run
+`python scripts/report_m5.py` to regenerate the results figure and aggregate
+report. The completed run's runtime manifest records its executed source commit;
+the final documentation commit also contains the strengthened independent audit
+and service checks. Package source hashes must match the frozen experiment.

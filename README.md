@@ -2,13 +2,43 @@
 
 A readable first implementation of semantic-ID next-item retrieval.
 
-**M5 is in progress:** a separate Amazon Reviews 2023 temporal cohort extends the
-2014 study with warm/new-item evaluation, a frozen content retrieval branch,
-fixed rank fusion, and portable CLI/HTTP inference. The implementation passes
-235 CPU checks, including a complete offline two-model demo. Amazon GPU results
-are still pending. See the [frozen M5 protocol](docs/m5_protocol.md),
-[run instructions](docs/m5_reproduction.md), and
-[code-review checkpoint](docs/learning_checkpoint_m5.md).
+**M5 completed and independently verified on 2026-10-14.** The Amazon Reviews
+2023 temporal study adds warm/new-item evaluation, frozen content retrieval,
+fixed rank fusion, and portable CLI/HTTP inference. Six models across three
+seeds were trained on the approved AutoDL RTX PRO 6000 fallback. The final
+local suite passes **240 tests**; the real inference bundle works on a CPU.
+
+On **2,252 eligible warm test users**, mean Recall@100 / MAP@20 are:
+
+| Method | Recall@100 | MAP@20 |
+|---|---:|---:|
+| Popularity | 5.373% | 0.994% |
+| Generative RQ-32 | 6.853% | 0.921% |
+| SASRec | 7.993% | 0.719% |
+
+SASRec leads retrieval recall; the generator leads SASRec on early-rank MAP,
+while popularity has higher MAP than both learned models. Fixed content fusion
+reduces measured quality, and new-item Recall@100 is only 1% for content and
+0.5% for either hybrid on 200 eligible new targets. These are measured
+limitations of a complete research prototype. Scores are conditional on
+catalog eligibility and should not be compared directly with the 2014 task.
+
+Read the [verified report](docs/m5_results.md),
+[aggregate evidence](docs/m5_summary.json), [audit](docs/m5_verification.json),
+[dataset card](docs/m5_data_card.md), [frozen protocol](docs/m5_protocol.md),
+and [run instructions](docs/m5_reproduction.md). Stop at the
+[M5 learning/code-review checkpoint](docs/learning_checkpoint_m5.md).
+
+Settled M5 rental cost was **¥14.67**, bringing cumulative project spend to
+**¥29.48 / ¥50**. The dedicated GPU is stopped; temporary account, instance,
+and local SSH keys are removed. Large research artifacts remain local in
+`results/m5/`; source and aggregate evidence are backed up here.
+
+![M5 quality and paired Recall differences](docs/figures/m5_results.svg)
+
+[Results PDF](docs/figures/m5_results.pdf) ·
+[Figure caption](docs/figures/m5_results.caption.md) ·
+[Research options after M5](docs/after_m5.md)
 
 ![M5 temporal model and content retrieval architecture](docs/figures/m5_architecture.svg)
 
@@ -71,7 +101,7 @@ and 32-entry RQ codebooks across three paired pipeline seeds. With equal
 generator capacity, mean full-test Recall@100 increases from **15.585% to
 17.375%**, and MAP@20 from **1.708% to 1.991%**. The independent audit passed
 all six checkpoints, 200,547 ranking context rows and 6,000 search-diagnostic
-rows. Read the [M4 results](docs/m4_results.md) and stop at the
+rows. Read the [M4 results](docs/m4_results.md) and
 [M4 learning checkpoint](docs/learning_checkpoint_m4.md). Rental cost was
 **¥4.13 of the ¥50 budget**, cumulative project cost **¥14.81**; the dedicated
 GPU is stopped and temporary SSH access removed. Full artifacts are local in
@@ -328,6 +358,45 @@ Try the returned seed-42 RQ-32 checkpoint on CPU:
 python -m beautyrec recommend --checkpoint results/m4/seeds/seed_42/rq32/best.pt --artifact-dir results/m4/arms/seed_42/rq32 --history B007IY97U0 B00870XLDS B008MIRO88 B00BQYYMN0 --beam-size 200 --top-k 20 --device cpu
 ```
 
+## M5: temporal transfer, new products, and usable inference
+
+M5 moves to Amazon Reviews 2023 Beauty and Personal Care with global time
+cutoffs, a training-selected cohort of 50,000 users, 38,336 warm products and
+20,000 available new products. It retains the RQ-32 recipe and compares three
+fresh generative/SASRec pairs. The [dataset card](docs/m5_data_card.md) explains
+the review-interaction task, first-target eligibility, and metadata limitations.
+Scores across the 2014 and 2023 stages are different tasks and are not directly
+comparable as gains.
+
+Run the complete small CPU demonstration without a model or data download:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/demo_m5.py
+```
+
+The Amazon experiment has separate preparation, training, auditing, and serving
+commands in the [reproduction guide](docs/m5_reproduction.md). With the returned
+real bundle already in this workspace, try a constructed catalog history:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/recommend_m5.py `
+  --history 1571208143 3621813292 0735369569 --top-k 5
+.\.venv\Scripts\python.exe scripts/recommend_m5.py --serve --port 8000
+```
+
+The local HTTP API offers generative, SASRec, content, and two fixed fusion
+strategies. Its default fusion demonstrates new-item reach; it is not a
+validated production policy. The bundle contains frozen vectors and inference
+weights and needs no raw reviews or text-model download. Its prespecified
+serving seed is 42. Unknown ASINs are rejected; all supplied seen items are
+excluded. [A real CPU HTTP example](docs/examples/m5_inference.json) is saved,
+and `python scripts/verify_m5_service.py` reproduces its functional checks.
+
+Start the learning session with the [M5 reading guide](docs/learning_checkpoint_m5.md).
+The [next-study assessment](docs/after_m5.md) prioritizes a direct semantic-prefix
+new-item route and diagnosis on the current dataset before changing models or
+datasets. Further training requires a new frozen protocol.
+
 ## Understand the code
 
 | Module | Responsibility |
@@ -351,6 +420,11 @@ python -m beautyrec recommend --checkpoint results/m4/seeds/seed_42/rq32/best.pt
 | `src/beautyrec/m4_benchmark.py` | Common token ranges, six fresh fits, frozen selection and capacity comparison |
 | `src/beautyrec/m4_diagnostics.py` | Validation token likelihoods, prefix coverage and search-ranking certificates |
 | `src/beautyrec/m3_benchmark.py` | Frozen tokenizer controls, common capacity and M3 orchestration |
+| `src/beautyrec/amazon2023.py` | Bounded streaming cohort, global time cutoffs, and source history audit |
+| `src/beautyrec/m5_features.py` | Pinned metadata encoder and warm/new feature manifests |
+| `src/beautyrec/m5_benchmark.py` | M5 training, frozen selection, mixed-catalog evaluation, and bundle export |
+| `src/beautyrec/content_retrieval.py` | Frozen mean-history cosine retrieval and fixed rank fusion |
+| `src/beautyrec/serving.py` | Verified portable bundle, ASIN requests, and local HTTP API |
 | `src/beautyrec/cli.py` | Thin command-line orchestration |
 
 Start reading `model.py`, then `decoding.py`, then `training.py`. Configuration
@@ -487,6 +561,11 @@ The M3 implementation passed **222 local CPU and GPU tests** and Ruff on
 2026-10-03, a real four-arm synthetic smoke run, and the full Amazon study.
 M4 passed **225 local CPU and GPU tests** and Ruff on 2026-10-14, plus a real
 two-arm synthetic run and an independent audit of its returned artifacts.
+M5 passed **235 CPU and GPU preflight tests** before training; five additional
+audit-corruption checks bring the final local suite to **240 passing tests**.
+The real exported Amazon bundle also passed all five inference strategies on
+the CPU through its HTTP API. The [saved example](docs/examples/m5_inference.json)
+uses a constructed catalog history and is separate from accuracy evidence.
 Synthetic smoke scores do not establish Amazon performance.
 
 The original dataset contains 198,502 reviews from 22,363 users. Preparation
@@ -520,6 +599,7 @@ preserve product names containing symbols and accented characters.
 ## References
 
 - [Amazon Reviews 2014 dataset](https://cseweb.ucsd.edu/~jmcauley/datasets/amazon/links.html)
+- [Amazon Reviews 2023 official deduplicated 0-core release](https://amazon-reviews-2023.github.io/data_processing/0core.html)
 - [TIGER: Recommender Systems with Generative Retrieval](https://arxiv.org/abs/2305.05065)
 - [DSI: Transformer Memory as a Differentiable Search Index](https://arxiv.org/abs/2202.06991)
 - [MiniLM sentence encoder](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)

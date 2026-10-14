@@ -1,0 +1,9 @@
+{
+  "verified": true,
+  "m5_complete": true,
+  "seeds": 3,
+  "checkpoint_count": 6,
+  "ranking_context_rows": 45612,
+  "source_training_contexts": 347969,
+  "protocol_fingerprint": "c0a620f4b44b4372b782342485af29048879dbb3ae2d94fb4f0f883597146e3f"
+}

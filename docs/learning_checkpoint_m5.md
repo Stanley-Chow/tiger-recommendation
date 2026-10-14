@@ -38,8 +38,12 @@ without relying on a training script as a black box.
   metadata similarity and what part identifies a particular training item?
 - Why does assigning a semantic prefix to a new item fail to teach the
   generator its previously unseen collision suffix?
+- How does the paper's explicit semantic-prefix expansion differ from M5's
+  closed warm trie and independent content retrieval route?
 - Why is MAP@20 equal to MRR@20 here? How would the definition change with
   several relevant future items per user?
+- Why are a semantic-token cross entropy and a next-item cross entropy not
+  directly comparable training-loss numbers?
 - Why do conditional Recall@100 and first-target eligibility coverage answer
   different questions? What would an unconditional hit rate measure?
 - What does a user-bootstrap interval condition on? Why should three training
@@ -63,3 +67,8 @@ next experiment that would resolve the largest uncertainty.
 Further experiments belong in a new frozen protocol. Completing the software
 does not establish that a generative architecture beats a conventional model,
 or that an offline gain improves user satisfaction.
+
+The [post-M5 research options](after_m5.md) explain a direct generative cold-item
+extension, possible tokenizer/ranker upgrades, and when another dataset would
+add useful evidence. These options follow the learning checkpoint and a
+separately frozen experiment plan.

@@ -170,19 +170,24 @@ def verify_temporal_contexts(processed, config):
                         "history": earlier[-config["max_history"] :],
                         "seen_items": earlier,
                         "target": target,
+                        "timestamp": timestamp,
+                        "history_end_timestamp": max(t for t, _ in past_train if t < timestamp),
                     }
                 )
         for split, lower, upper in (("validation", start, test_start), ("test", test_start, end)):
             future = [(t, asin) for t, asin in events if lower <= t < upper]
             if not future:
                 continue
-            _, target_asin = future[0]  # Eligibility is applied only after this choice.
+            timestamp, target_asin = future[0]  # Eligibility follows this first-target choice.
             earlier = [(t, asin) for t, asin in events if t < lower]
             warm_seen = [warm_ids[asin] for _, asin in earlier if asin in warm_ids]
             base = {
                 "user_id": user,
                 "history": warm_seen[-config["max_history"] :],
                 "seen_items": warm_seen,
+                "timestamp": timestamp,
+                "request_timestamp": lower,
+                "history_end_timestamp": max(t for t, _ in earlier),
             }
             if target_asin in warm_ids:
                 expected[split].append({**base, "target": warm_ids[target_asin]})
@@ -194,21 +199,41 @@ def verify_temporal_contexts(processed, config):
                         "history": seen[-config["max_history"] :],
                         "seen_items": seen,
                         "target": available_ids[target_asin],
+                        "timestamp": timestamp,
+                        "request_timestamp": lower,
+                        "history_end_timestamp": base["history_end_timestamp"],
                     }
                 )
     rows = {}
     for split in expected:
         rows[split] = read_examples(processed / f"{split}.jsonl")
         require(
-            [context(row) for row in rows[split]] == expected[split],
+            [context(row) for row in rows[split]] == [context(row) for row in expected[split]],
             f"Temporal context reconstruction differs: {split}",
         )
-        for row in rows[split]:
+        for row, reconstructed in zip(rows[split], expected[split]):
+            for key in ("timestamp", "history_end_timestamp"):
+                require(row[key] == reconstructed[key], f"Source event time differs: {split}/{key}")
             require(row["history_end_timestamp"] < row["timestamp"], "Future history leakage.")
             if split != "train":
                 require(
+                    row["request_timestamp"] == reconstructed["request_timestamp"],
+                    "Request timestamp differs from the global window start.",
+                )
+                require(
                     row["history_end_timestamp"] < row["request_timestamp"] <= row["timestamp"],
                     "Invalid frozen request timestamp.",
+                )
+            if split == "mixed_test":
+                warm_seen = [item for item in row["seen_items"] if item < len(warm)]
+                require(
+                    row["warm_seen_items"] == warm_seen
+                    and row["warm_history"] == warm_seen[-config["max_history"] :],
+                    "Warm projection differs from the complete source history.",
+                )
+                require(
+                    row["target_type"] == ("warm" if row["target"] < len(warm) else "new"),
+                    "Incorrect warm/new target label.",
                 )
     require(
         np.array_equal(popularity, np.load(processed / "item_popularity.npy")),

@@ -1,0 +1,229 @@
+{
+  "verified": true,
+  "purpose": "Functional example from constructed catalog history; not accuracy evidence.",
+  "protocol_fingerprint": "c0a620f4b44b4372b782342485af29048879dbb3ae2d94fb4f0f883597146e3f",
+  "device": "cpu",
+  "serving_seed": 42,
+  "bundle_file_hashes": {
+    "available_catalog.json": "e36cae42d18341e08ab7d8f53f73a3d5ea2062d7f576d172087c9d0d8ea70911",
+    "available_embeddings.npy": "06f84b48d2d3f51ceedbcbc74dc346bd948b6562154daa8edd906e14ec7f1fb3",
+    "catalog.json": "0a55d4fb154bf27be9c5207f730bcb97b3b7e683d8d627ce781d7126b176bc35",
+    "generative.pt": "ad5c9dbc913aefd2166ff909bc11e0533f5da19670fe12d39e63a3edddb2ee1d",
+    "sasrec.pt": "add0c2f412e9d7467cc21260040b795db558ee19f986ebdec03e5d6869007954",
+    "semantic_ids.json": "29470b1a4379f28ae5853638a3112fbfd1a3f9b670ff5a86acf19ece6ad39646"
+  },
+  "health": {
+    "status": "ok",
+    "strategies": [
+      "generative",
+      "sasrec",
+      "content",
+      "generative_content",
+      "sasrec_content"
+    ],
+    "warm_items": 38336,
+    "available_items": 58336,
+    "diagnostic_only": false
+  },
+  "request": {
+    "history": [
+      "1571208143",
+      "3621813292",
+      "0735369569"
+    ],
+    "top_k": 5
+  },
+  "responses": {
+    "generative": {
+      "strategy": "generative",
+      "serving_seed": 42,
+      "warm_history_items": 2,
+      "available_history_items": 3,
+      "recommendations": [
+        {
+          "rank": 1,
+          "asin": "B07YT2VKTG",
+          "title": "Maybelline Instant Age Rewind Eraser Dark Circles Treatment Concealer, Fair 0.2 oz (Pack of 2)",
+          "new_item": false
+        },
+        {
+          "rank": 2,
+          "asin": "B0BVGHXZJ1",
+          "title": "essence | Lash Princess False Lash Effect Mascara | Gluten & Cruelty Free",
+          "new_item": false
+        },
+        {
+          "rank": 3,
+          "asin": "B073WVCH57",
+          "title": "Coty Airspun Loose Face Powder 2.3 Ounce Honey Beige Light Peach Tone Loose Face Powder, for Setting or Foundation, Lightweight, Long Lasting, Pack of 1",
+          "new_item": false
+        },
+        {
+          "rank": 4,
+          "asin": "B01LSUQSB0",
+          "title": "REVLON One-Step Volumizer Original 1.0 Hair Dryer and Hot Air Brush, Black",
+          "new_item": false
+        },
+        {
+          "rank": 5,
+          "asin": "B01MQS7GFT",
+          "title": "Pronexa Hairgenics Lavish Lash (3ml, 3 Month Supply) – Eyelash Growth Enhancer & Brow Serum with Natural Growth Peptides for Long, Thick Lashes and Eyebrows! Dermatologist Certified & Hypoallergenic.",
+          "new_item": false
+        }
+      ]
+    },
+    "sasrec": {
+      "strategy": "sasrec",
+      "serving_seed": 42,
+      "warm_history_items": 2,
+      "available_history_items": 3,
+      "recommendations": [
+        {
+          "rank": 1,
+          "asin": "B00HFG0FAM",
+          "title": "HEMPZ Body Lotion - Grapefruit & Raspberry Crème Daily Moisturizing Cream, Shea Butter Body Moisturizer - Skin Care Products, Hemp Seed Oil - Large",
+          "new_item": false
+        },
+        {
+          "rank": 2,
+          "asin": "B001MA0QY2",
+          "title": "HSI Professional Glider Ceramic Flat Iron Hair Straightener - Pro Hairstyling Tool Plus Hair Treatment Pouch & Glove - Adjustable Temperature Even Heat Distribution for Straightening and Curling Hair",
+          "new_item": false
+        },
+        {
+          "rank": 3,
+          "asin": "B01BD8EL0W",
+          "title": "Wunder2 WUNDERBROW Makeup Waterproof Eyebrow Gel For Long Lasting Eye Brow Make Up, Black/Brown",
+          "new_item": false
+        },
+        {
+          "rank": 4,
+          "asin": "B0018A32XS",
+          "title": "Panasonic Electric Shaver for Women, Cordless 3 Blade Razor, Pop-Up Trimmer, Close Curves, Wet Dry Operation, Independent Floating Heads - ES2207P",
+          "new_item": false
+        },
+        {
+          "rank": 5,
+          "asin": "B00150LT40",
+          "title": "Seche Vite Dry Fast Top Nail Coat, Clear - .5 oz. oz",
+          "new_item": false
+        }
+      ]
+    },
+    "content": {
+      "strategy": "content",
+      "serving_seed": 42,
+      "warm_history_items": 2,
+      "available_history_items": 3,
+      "recommendations": [
+        {
+          "rank": 1,
+          "asin": "B07CNMV5X6",
+          "title": "COVERGIRL LineExact Liquid Eyeliner Very Black 600, .02 oz",
+          "new_item": false
+        },
+        {
+          "rank": 2,
+          "asin": "B0B35SLS1H",
+          "title": "Eyeliner & Makeup Mirror Set,Waterproof Long Lasting & Smudge-proof Eyeliner sets, Winged Eyeliner Stamp，Eye Makeup Set for Women，include 1 Black Liquid Eyeliner,1 Black Gel Eyeliner& 1 Brown Gel Eyeliner,1 Compact Mirror(Set 1)",
+          "new_item": true
+        },
+        {
+          "rank": 3,
+          "asin": "B09MF6H7T3",
+          "title": "Beaupretty 5Pcs Makeup Sponge with Handle Beauty Foundation Blending Sponge Small Mushroom Head Eye Shadow Applicators",
+          "new_item": true
+        },
+        {
+          "rank": 4,
+          "asin": "B0B5RD31D3",
+          "title": "dooreemee Waterproof Liquid Eyeliner,Long Lasting Liquid Eye liner Makeup Pen,Stay All Day Waterproof Liquid Eye Liner For Intense Eye Definition, Make perfect eye makeup,Pitch Black (02brush head)",
+          "new_item": true
+        },
+        {
+          "rank": 5,
+          "asin": "B0BHTHD1NW",
+          "title": "HEROINE MAKE by KISSME Smooth Liquid Eyeliner Super Keep Waterproof 03 Brown Black",
+          "new_item": false
+        }
+      ]
+    },
+    "generative_content": {
+      "strategy": "generative_content",
+      "serving_seed": 42,
+      "warm_history_items": 2,
+      "available_history_items": 3,
+      "recommendations": [
+        {
+          "rank": 1,
+          "asin": "B076VYH9Z5",
+          "title": "beautyblender Nova Blender – Makeup Sponge for Foundation, Highlighter or Concealer, Professional Blending Application, Vegan & Cruelty Free, Made in the USA",
+          "new_item": false
+        },
+        {
+          "rank": 2,
+          "asin": "B07YWZT1JX",
+          "title": "Docolor Eyeliner Stamp Double-sided Liquid Winged Eye Liner Pen Waterproof Smudgeproof Long Lasting Wing Original Eyeliner Pen",
+          "new_item": false
+        },
+        {
+          "rank": 3,
+          "asin": "B07CNMV5X6",
+          "title": "COVERGIRL LineExact Liquid Eyeliner Very Black 600, .02 oz",
+          "new_item": false
+        },
+        {
+          "rank": 4,
+          "asin": "B07YT2VKTG",
+          "title": "Maybelline Instant Age Rewind Eraser Dark Circles Treatment Concealer, Fair 0.2 oz (Pack of 2)",
+          "new_item": false
+        },
+        {
+          "rank": 5,
+          "asin": "B0BVGHXZJ1",
+          "title": "essence | Lash Princess False Lash Effect Mascara | Gluten & Cruelty Free",
+          "new_item": false
+        }
+      ]
+    },
+    "sasrec_content": {
+      "strategy": "sasrec_content",
+      "serving_seed": 42,
+      "warm_history_items": 2,
+      "available_history_items": 3,
+      "recommendations": [
+        {
+          "rank": 1,
+          "asin": "B00HFG0FAM",
+          "title": "HEMPZ Body Lotion - Grapefruit & Raspberry Crème Daily Moisturizing Cream, Shea Butter Body Moisturizer - Skin Care Products, Hemp Seed Oil - Large",
+          "new_item": false
+        },
+        {
+          "rank": 2,
+          "asin": "B07CNMV5X6",
+          "title": "COVERGIRL LineExact Liquid Eyeliner Very Black 600, .02 oz",
+          "new_item": false
+        },
+        {
+          "rank": 3,
+          "asin": "B001MA0QY2",
+          "title": "HSI Professional Glider Ceramic Flat Iron Hair Straightener - Pro Hairstyling Tool Plus Hair Treatment Pouch & Glove - Adjustable Temperature Even Heat Distribution for Straightening and Curling Hair",
+          "new_item": false
+        },
+        {
+          "rank": 4,
+          "asin": "B0B35SLS1H",
+          "title": "Eyeliner & Makeup Mirror Set,Waterproof Long Lasting & Smudge-proof Eyeliner sets, Winged Eyeliner Stamp，Eye Makeup Set for Women，include 1 Black Liquid Eyeliner,1 Black Gel Eyeliner& 1 Brown Gel Eyeliner,1 Compact Mirror(Set 1)",
+          "new_item": true
+        },
+        {
+          "rank": 5,
+          "asin": "B01BD8EL0W",
+          "title": "Wunder2 WUNDERBROW Makeup Waterproof Eyebrow Gel For Long Lasting Eye Brow Make Up, Black/Brown",
+          "new_item": false
+        }
+      ]
+    }
+  },
+  "unknown_asin_http_status": 400
+}

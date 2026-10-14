@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "beautyrec"
 version = "0.1.0"
-description = "Readable semantic-ID generative recommendation on Amazon 2014 Beauty"
+description = "Readable semantic-ID generative recommendation with temporal Amazon Beauty benchmarks"
 requires-python = ">=3.10"
 dependencies = ["numpy>=1.24", "scikit-learn>=1.3", "torch>=2.2"]
 
